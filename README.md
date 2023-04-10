@@ -1,2 +1,3 @@
 # MelodiNusantara
-Project ini dibuat untuk keperluan tugas akhir kuliah :D​​
+
+The source code was spaghetti from front to back BUT if you're interested in taking a peek, go ahead but YOU HAVE BEEN WARNED.
