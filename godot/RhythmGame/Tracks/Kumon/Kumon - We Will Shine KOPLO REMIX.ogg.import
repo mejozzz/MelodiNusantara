@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Kumon - We Will Shine KOPLO REMIX.ogg-2fc161f6c79ed34f127155f00af3d914.oggstr"
+
+[deps]
+
+source_file="res://RhythmGame/Tracks/Kumon/Kumon - We Will Shine KOPLO REMIX.ogg"
+dest_files=[ "res://.import/Kumon - We Will Shine KOPLO REMIX.ogg-2fc161f6c79ed34f127155f00af3d914.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
