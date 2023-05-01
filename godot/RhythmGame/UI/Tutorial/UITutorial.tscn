@@ -1,0 +1,396 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://RhythmGame/Hits/target_circle.shader" type="Shader" id=1]
+[ext_resource path="res://RhythmGame/UI/Fonts/Montserrat-Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://RhythmGame/Hits/hit_sprites.png" type="Texture" id=3]
+[ext_resource path="res://RhythmGame/UI/TrackFinished/background_end_screen.png" type="Texture" id=4]
+[ext_resource path="res://RhythmGame/VFX/hit_sprites.png" type="Texture" id=5]
+[ext_resource path="res://RhythmGame/UI/Tutorial/sliderballtransparent.png" type="Texture" id=6]
+[ext_resource path="res://RhythmGame/UI/Tutorial/UITutorial.gd" type="Script" id=7]
+
+[sub_resource type="DynamicFont" id=8]
+size = 75
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 70
+font_data = ExtResource( 2 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 150, 150 )
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 1 )
+shader_param/torus_thickness = 0.015
+shader_param/torus_hardness = -2.0
+shader_param/torus_radius = 0.5
+
+[sub_resource type="DynamicFont" id=3]
+size = 70
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 70
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 87
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 70
+font_data = ExtResource( 2 )
+
+[node name="UITutorial" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 7 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
+margin_left = 260.0
+margin_top = 112.0
+margin_right = 1660.0
+margin_bottom = 967.0
+custom_constants/separation = 57
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/CenterContainer/VBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 1400.0
+margin_bottom = 700.0
+texture = ExtResource( 4 )
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/CenterContainer/VBoxContainer"]
+margin_top = 757.0
+margin_right = 1400.0
+margin_bottom = 855.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/CenterContainer/VBoxContainer/CenterContainer"]
+margin_left = 522.0
+margin_right = 877.0
+margin_bottom = 98.0
+custom_constants/separation = 151
+
+[node name="PrevButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+margin_right = 102.0
+margin_bottom = 98.0
+size_flags_horizontal = 2
+custom_fonts/font = SubResource( 8 )
+text = "<<"
+
+[node name="NextButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+margin_left = 253.0
+margin_right = 355.0
+margin_bottom = 98.0
+size_flags_horizontal = 2
+custom_fonts/font = SubResource( 8 )
+text = ">>"
+
+[node name="Tutorial1" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Tutorial1"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Tutorial1/CenterContainer"]
+margin_left = 260.0
+margin_top = 190.0
+margin_right = 1660.0
+margin_bottom = 890.0
+texture = ExtResource( 4 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Tutorial1/CenterContainer/TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_top = -18.0
+margin_right = -1.0
+margin_bottom = -18.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Tutorial1/CenterContainer/TextureRect/MarginContainer"]
+margin_right = 1400.0
+margin_bottom = 700.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Tutorial1/CenterContainer/TextureRect/MarginContainer/CenterContainer"]
+margin_left = 173.0
+margin_top = 134.0
+margin_right = 1226.0
+margin_bottom = 565.0
+custom_constants/separation = 106
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Tutorial1/CenterContainer/TextureRect/MarginContainer/CenterContainer/VBoxContainer"]
+margin_right = 1053.0
+margin_bottom = 150.0
+custom_constants/separation = 54
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Tutorial1/CenterContainer/TextureRect/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+margin_right = 362.0
+margin_bottom = 150.0
+
+[node name="Label" type="Label" parent="Tutorial1/CenterContainer/TextureRect/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+margin_top = 32.0
+margin_right = 208.0
+margin_bottom = 118.0
+custom_fonts/font = SubResource( 1 )
+text = "Circle"
+
+[node name="TextureRect" type="TextureRect" parent="Tutorial1/CenterContainer/TextureRect/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+margin_left = 212.0
+margin_right = 362.0
+margin_bottom = 150.0
+texture = SubResource( 2 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Tutorial1/CenterContainer/TextureRect/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 416.0
+margin_right = 1053.0
+margin_bottom = 150.0
+custom_constants/separation = 20
+
+[node name="Label" type="Label" parent="Tutorial1/CenterContainer/TextureRect/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/HBoxContainer2"]
+margin_top = 32.0
+margin_right = 467.0
+margin_bottom = 118.0
+custom_fonts/font = SubResource( 1 )
+text = "Target Circle"
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial1/CenterContainer/TextureRect/MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/HBoxContainer2"]
+material = SubResource( 4 )
+margin_left = 487.0
+margin_right = 637.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 150 )
+color = Color( 0.313726, 0.0862745, 0.0862745, 1 )
+
+[node name="Label" type="Label" parent="Tutorial1/CenterContainer/TextureRect/MarginContainer/CenterContainer/VBoxContainer"]
+margin_top = 256.0
+margin_right = 1053.0
+margin_bottom = 431.0
+custom_fonts/font = SubResource( 3 )
+text = "Click the Circle when the two touch"
+autowrap = true
+
+[node name="Tutorial2" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Tutorial2"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Tutorial2/CenterContainer"]
+margin_left = 260.0
+margin_top = 190.0
+margin_right = 1660.0
+margin_bottom = 890.0
+texture = ExtResource( 4 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Tutorial2/CenterContainer/TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_top = -18.0
+margin_right = -1.0
+margin_bottom = -18.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Tutorial2/CenterContainer/TextureRect/MarginContainer"]
+margin_right = 1400.0
+margin_bottom = 700.0
+
+[node name="Label" type="Label" parent="Tutorial2/CenterContainer/TextureRect/MarginContainer/CenterContainer"]
+margin_left = 174.0
+margin_top = 307.0
+margin_right = 1225.0
+margin_bottom = 393.0
+custom_fonts/font = SubResource( 5 )
+text = "Accurate clicks = more score"
+align = 1
+
+[node name="Tutorial3" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Tutorial3"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Tutorial3/CenterContainer"]
+margin_left = 260.0
+margin_top = 190.0
+margin_right = 1660.0
+margin_bottom = 890.0
+texture = ExtResource( 4 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Tutorial3/CenterContainer/TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_top = -18.0
+margin_right = -1.0
+margin_bottom = -18.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Tutorial3/CenterContainer/TextureRect/MarginContainer"]
+margin_right = 1400.0
+margin_bottom = 700.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Tutorial3/CenterContainer/TextureRect/MarginContainer/CenterContainer"]
+margin_left = 125.0
+margin_top = 94.0
+margin_right = 1275.0
+margin_bottom = 605.0
+custom_constants/separation = 25
+
+[node name="CenterContainer" type="CenterContainer" parent="Tutorial3/CenterContainer/TextureRect/MarginContainer/CenterContainer/VBoxContainer"]
+margin_right = 1150.0
+margin_bottom = 400.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Tutorial3/CenterContainer/TextureRect/MarginContainer/CenterContainer/VBoxContainer/CenterContainer"]
+margin_left = 190.0
+margin_right = 960.0
+margin_bottom = 400.0
+custom_constants/separation = 109
+
+[node name="Label" type="Label" parent="Tutorial3/CenterContainer/TextureRect/MarginContainer/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+margin_top = 146.0
+margin_right = 261.0
+margin_bottom = 253.0
+custom_fonts/font = SubResource( 6 )
+text = "Slider"
+
+[node name="TextureRect" type="TextureRect" parent="Tutorial3/CenterContainer/TextureRect/MarginContainer/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+margin_left = 370.0
+margin_right = 770.0
+margin_bottom = 400.0
+texture = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="Tutorial3/CenterContainer/TextureRect/MarginContainer/CenterContainer/VBoxContainer"]
+margin_top = 425.0
+margin_right = 1150.0
+margin_bottom = 511.0
+custom_fonts/font = SubResource( 3 )
+text = "Click, hold and follow the slider"
+
+[node name="Tutorial4" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Tutorial4"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Tutorial4/CenterContainer"]
+margin_left = 260.0
+margin_top = 190.0
+margin_right = 1660.0
+margin_bottom = 890.0
+texture = ExtResource( 4 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Tutorial4/CenterContainer/TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_top = -18.0
+margin_right = -1.0
+margin_bottom = -18.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Tutorial4/CenterContainer/TextureRect/MarginContainer"]
+margin_right = 1400.0
+margin_bottom = 700.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Tutorial4/CenterContainer/TextureRect/MarginContainer/CenterContainer"]
+margin_left = 136.0
+margin_top = 167.0
+margin_right = 1263.0
+margin_bottom = 532.0
+custom_constants/separation = 25
+
+[node name="CenterContainer" type="CenterContainer" parent="Tutorial4/CenterContainer/TextureRect/MarginContainer/CenterContainer/VBoxContainer"]
+margin_right = 1127.0
+margin_bottom = 254.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Tutorial4/CenterContainer/TextureRect/MarginContainer/CenterContainer/VBoxContainer/CenterContainer"]
+margin_left = 263.0
+margin_right = 863.0
+margin_bottom = 254.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Tutorial4/CenterContainer/TextureRect/MarginContainer/CenterContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+margin_right = 600.0
+margin_bottom = 100.0
+custom_constants/separation = 6
+
+[node name="Label" type="Label" parent="Tutorial4/CenterContainer/TextureRect/MarginContainer/CenterContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+margin_right = 145.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 7 )
+text = "0"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="Tutorial4/CenterContainer/TextureRect/MarginContainer/CenterContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 151.0
+margin_right = 297.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 7 )
+text = "3"
+align = 1
+valign = 1
+
+[node name="Label3" type="Label" parent="Tutorial4/CenterContainer/TextureRect/MarginContainer/CenterContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 303.0
+margin_right = 448.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 7 )
+text = "5"
+align = 1
+valign = 1
+
+[node name="Label4" type="Label" parent="Tutorial4/CenterContainer/TextureRect/MarginContainer/CenterContainer/VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 454.0
+margin_right = 600.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 7 )
+text = "10"
+align = 1
+valign = 1
+
+[node name="TextureRect" type="TextureRect" parent="Tutorial4/CenterContainer/TextureRect/MarginContainer/CenterContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+margin_top = 104.0
+margin_right = 600.0
+margin_bottom = 254.0
+texture = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="Tutorial4/CenterContainer/TextureRect/MarginContainer/CenterContainer/VBoxContainer"]
+margin_top = 279.0
+margin_right = 1127.0
+margin_bottom = 365.0
+custom_fonts/font = SubResource( 3 )
+text = "Pay attention to your accuracy"
+
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/PrevButton" to="." method="_on_PrevButton_pressed"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]

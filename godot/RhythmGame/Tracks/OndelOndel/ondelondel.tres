@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://RhythmGame/Tracks/TrackData.gd" type="Script" id=1]
+[ext_resource path="res://RhythmGame/Tracks/OndelOndel/monas400.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+label = "Ondel Ondel - DKI Jakarta"
+stream = "res://RhythmGame/Tracks/OndelOndel/Ondel-Ondel-Jakarta.ogg"
+bpm = 105
+icon = ExtResource( 2 )
+artist = "Artist"

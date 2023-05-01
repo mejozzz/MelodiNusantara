@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/[ holoIDberp3sta] id：entity voices Gamelan ver.mp3-7ce5fc8dff7726f5d23ff96e6995f1cc.mp3str"
+
+[deps]
+
+source_file="res://RhythmGame/MainMenu/audio/[ holoIDberp3sta] id：entity voices Gamelan ver.mp3"
+dest_files=[ "res://.import/[ holoIDberp3sta] id：entity voices Gamelan ver.mp3-7ce5fc8dff7726f5d23ff96e6995f1cc.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

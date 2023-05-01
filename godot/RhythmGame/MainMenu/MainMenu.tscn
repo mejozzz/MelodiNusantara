@@ -1,0 +1,354 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://RhythmGame/MainMenu/bg_loop.ogv" type="VideoStream" id=1]
+[ext_resource path="res://RhythmGame/UI/Fonts/Montserrat-Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://RhythmGame/MainMenu/VideoControl.gd" type="Script" id=3]
+[ext_resource path="res://RhythmGame/Shader/Blur.tres" type="Shader" id=4]
+[ext_resource path="res://RhythmGame/MainMenu/MainMenu.gd" type="Script" id=5]
+[ext_resource path="res://RhythmGame/MainMenu/audio/hit_sfx.wav" type="AudioStream" id=6]
+[ext_resource path="res://RhythmGame/MainMenu/audio/hover_sfx.wav" type="AudioStream" id=7]
+[ext_resource path="res://RhythmGame/MainMenu/audio/[ holoIDberp3sta] id：entity voices Gamelan ver.mp3" type="AudioStream" id=8]
+[ext_resource path="res://RhythmGame/MainMenu/sprites/close34t.png" type="Texture" id=9]
+[ext_resource path="res://RhythmGame/MainMenu/Montserrat.tres" type="DynamicFont" id=10]
+[ext_resource path="res://RhythmGame/UI/Tutorial/UITutorial.tscn" type="PackedScene" id=13]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 4 )
+shader_param/blursize = 10
+
+[sub_resource type="Shader" id=10]
+code = "shader_type canvas_item;
+
+uniform float height = 5.0;
+uniform float speed = 2.5;
+uniform float frequency = 5.0;
+
+void vertex(){
+	VERTEX.y += height * sin((frequency * UV.x) + (speed * TIME));
+}"
+
+[sub_resource type="ShaderMaterial" id=11]
+shader = SubResource( 10 )
+shader_param/height = 5.0
+shader_param/speed = 2.5
+shader_param/frequency = 5.0
+
+[sub_resource type="DynamicFont" id=7]
+size = 128
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 64
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 64
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=8]
+resource_name = "show_about"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/AboutPanel:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "show_tutor"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/UITutorial:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
+}
+
+[node name="MainMenu" type="Node"]
+script = ExtResource( 5 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VideoControl" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="VideoPlayer" type="VideoPlayer" parent="CanvasLayer/VideoControl"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+stream = ExtResource( 1 )
+autoplay = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/VideoControl"]
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Menus" type="MarginContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Menus"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Menus/CenterContainer"]
+margin_left = 367.0
+margin_top = 265.0
+margin_right = 1552.0
+margin_bottom = 814.0
+custom_constants/separation = 40
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Menus/CenterContainer/VBoxContainer"]
+margin_right = 1185.0
+margin_bottom = 157.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Menus/CenterContainer/VBoxContainer/CenterContainer"]
+material = SubResource( 11 )
+margin_right = 1185.0
+margin_bottom = 157.0
+custom_colors/font_color = Color( 0.352941, 0.847059, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 5
+custom_fonts/font = SubResource( 7 )
+text = "Melodi Nusantara"
+
+[node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer/Menus/CenterContainer/VBoxContainer"]
+margin_top = 197.0
+margin_right = 1185.0
+margin_bottom = 549.0
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Menus/CenterContainer/VBoxContainer/CenterContainer2"]
+margin_left = 432.0
+margin_right = 753.0
+margin_bottom = 352.0
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Menus/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
+margin_right = 321.0
+margin_bottom = 85.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Menus/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer"]
+margin_right = 321.0
+margin_bottom = 85.0
+custom_constants/separation = 12
+
+[node name="Selector" type="Label" parent="CanvasLayer/Menus/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
+margin_top = 3.0
+margin_right = 38.0
+margin_bottom = 82.0
+rect_min_size = Vector2( 38, 0 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 6
+custom_fonts/font = SubResource( 5 )
+text = ">"
+
+[node name="Start" type="Button" parent="CanvasLayer/Menus/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
+margin_left = 50.0
+margin_right = 321.0
+margin_bottom = 85.0
+rect_min_size = Vector2( 271, 85 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Start"
+flat = true
+align = 0
+
+[node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer/Menus/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
+margin_top = 89.0
+margin_right = 321.0
+margin_bottom = 174.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Menus/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2"]
+margin_right = 321.0
+margin_bottom = 85.0
+custom_constants/separation = 12
+
+[node name="Selector" type="Label" parent="CanvasLayer/Menus/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/HBoxContainer"]
+margin_top = 3.0
+margin_right = 38.0
+margin_bottom = 82.0
+rect_min_size = Vector2( 38, 0 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 6
+custom_fonts/font = SubResource( 5 )
+text = ">"
+
+[node name="About" type="Button" parent="CanvasLayer/Menus/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/HBoxContainer"]
+margin_left = 50.0
+margin_right = 321.0
+margin_bottom = 85.0
+rect_min_size = Vector2( 271, 85 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.0235294, 0.0235294, 0.0235294, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "About"
+flat = true
+align = 0
+
+[node name="CenterContainer3" type="CenterContainer" parent="CanvasLayer/Menus/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
+margin_top = 178.0
+margin_right = 321.0
+margin_bottom = 263.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Menus/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3"]
+margin_right = 321.0
+margin_bottom = 85.0
+custom_constants/separation = 12
+
+[node name="Selector" type="Label" parent="CanvasLayer/Menus/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/HBoxContainer"]
+margin_top = 3.0
+margin_right = 38.0
+margin_bottom = 82.0
+rect_min_size = Vector2( 38, 79 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 6
+custom_fonts/font = SubResource( 5 )
+text = ">"
+
+[node name="Tutorial" type="Button" parent="CanvasLayer/Menus/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/HBoxContainer"]
+margin_left = 50.0
+margin_right = 321.0
+margin_bottom = 85.0
+rect_min_size = Vector2( 271, 85 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "Tutorial"
+flat = true
+align = 0
+
+[node name="CenterContainer4" type="CenterContainer" parent="CanvasLayer/Menus/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
+margin_top = 267.0
+margin_right = 321.0
+margin_bottom = 352.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Menus/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer4"]
+margin_right = 321.0
+margin_bottom = 85.0
+custom_constants/separation = 12
+
+[node name="Selector" type="Label" parent="CanvasLayer/Menus/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer4/HBoxContainer"]
+margin_top = 3.0
+margin_right = 38.0
+margin_bottom = 82.0
+rect_min_size = Vector2( 38, 0 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 6
+custom_fonts/font = SubResource( 5 )
+text = ">"
+
+[node name="Exit" type="Button" parent="CanvasLayer/Menus/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer4/HBoxContainer"]
+margin_left = 50.0
+margin_right = 321.0
+margin_bottom = 85.0
+rect_min_size = Vector2( 271, 85 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "Exit"
+flat = true
+align = 0
+
+[node name="AboutPanel" type="Panel" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -600.0
+margin_top = -400.0
+margin_right = 600.0
+margin_bottom = 400.0
+rect_scale = Vector2( 1e-05, 1e-05 )
+rect_pivot_offset = Vector2( 600, 400 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/AboutPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/normal_font = ExtResource( 10 )
+tab_size = 10
+text = "Project ini dibuat untuk keperluan tugas akhir kuliah :D
+
+Programmer & Art
+Luky
+
+Background Menu Art : /@reddit
+Monas Icon Art : /@PixelCrystalium
+
+Music
+entity holoID
+Sinanggar Tulo
+Ondel Ondel
+Yamko Rambe Yamko
+Sabilulungan
+We Will Shine "
+
+[node name="CloseAboutPanel" type="Button" parent="CanvasLayer/AboutPanel"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -53.0
+margin_right = -7.0
+margin_bottom = 40.0
+icon = ExtResource( 9 )
+flat = true
+
+[node name="UITutorial" parent="CanvasLayer" instance=ExtResource( 13 )]
+self_modulate = Color( 1, 1, 1, 0 )
+rect_scale = Vector2( 1e-05, 1e-05 )
+rect_pivot_offset = Vector2( 960, 540 )
+
+[node name="bg_loop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -10.0
+autoplay = true
+
+[node name="hit_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -5.0
+
+[node name="hover_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -10.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/show_about = SubResource( 8 )
+anims/show_tutor = SubResource( 9 )
+
+[connection signal="mouse_entered" from="CanvasLayer/Menus/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer/Start" to="." method="_on_Start_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/Menus/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Menus/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/HBoxContainer/About" to="." method="_on_About_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/Menus/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/HBoxContainer/About" to="." method="_on_About_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Menus/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/HBoxContainer/Tutorial" to="." method="_on_Tutorial_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/Menus/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/HBoxContainer/Tutorial" to="." method="_on_Tutorial_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Menus/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer4/HBoxContainer/Exit" to="." method="_on_Exit_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/Menus/CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer4/HBoxContainer/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="CanvasLayer/AboutPanel/CloseAboutPanel" to="." method="_on_CloseAboutPanel_pressed"]

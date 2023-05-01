@@ -1,0 +1,11 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform int blursize : hint_range(0, 20);
+
+void fragment(){
+	COLOR = textureLod(SCREEN_TEXTURE, SCREEN_UV, float(blursize)/10.0);
+}"

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Yamko Rambe Yamko.ogg-4504ac499b2d2d8d5b0a2387c5bd35fa.oggstr"
+
+[deps]
+
+source_file="res://RhythmGame/Tracks/YamkoRambeYamko/Yamko Rambe Yamko.ogg"
+dest_files=[ "res://.import/Yamko Rambe Yamko.ogg-4504ac499b2d2d8d5b0a2387c5bd35fa.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
